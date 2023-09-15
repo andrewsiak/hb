@@ -15,9 +15,6 @@ while True:
         print("This is the end.")
         break
 
-# git add -A
-# git commit -m "initial commit"
-    
     operator = tokens[0]
     num1 = tokens[1]
 
