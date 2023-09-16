@@ -1,40 +1,27 @@
-print("Day 1")
-the_file = open("um-deliveries-day-1.txt")
-for line in the_file:
-    line = line.rstrip()
-    words = line.split('|')
-
-    melon = words[0]
-    count = words[0]
-    amount = words[0]
-
-    print(f"Delivered {count} {melon}s for total of ${amount}")
-the_file.close()
 
 
-print("Day 2")
-the_file = open("um-deliveries-day-2.txt")
-for line in the_file:
-    line = line.rstrip()
-    words = line.split('|')
 
-    melon = words[0]
-    count = words[0]
-    amount = words[0]
+def melon_delivery_summary(day):
+    """Updating file to remobe redundancy and provide a daily report of melons stuffs"""
 
-    print(f"Delivered {count} {melon}s for total of ${amount}")
-the_file.close()
+    print("Day", day)    
+    file_name = "um-deliveries-day-" + str(day) + ".txt"
+    the_file = open(file_name)
+    for line in the_file:
+        line = line.rstrip()
+        words = line.split('|')
+
+        # would not have needed this if i didnt break the text with extra lines
+        if line == "":
+            continue
+
+        melon = words[0]
+        count = words[1]
+        amount = words[2]
+
+        print(f"Delivered {count} {melon}s for total of ${amount}")
+    the_file.close()
 
 
-print("Day 3")
-the_file = open("um-deliveries-day-3.txt")
-for line in the_file:
-    line = line.rstrip()
-    words = line.split('|')
-
-    melon = words[0]
-    count = words[0]
-    amount = words[0]
-
-    print(f"Delivered {count} {melon}s for total of ${amount}")
-the_file.close()
+for input_day in range(1,4):
+    melon_delivery_summary(input_day)
