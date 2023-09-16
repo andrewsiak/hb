@@ -6,6 +6,7 @@ def melon_delivery_summary(day):
 
     print("Day", day)    
     file_name = "um-deliveries-day-" + str(day) + ".txt"
+        # f string
     the_file = open(file_name)
     for line in the_file:
         line = line.rstrip()
