@@ -20,7 +20,7 @@ while True:
 
     num_list = tokens[1:]
     for num in num_list:
-        if not nu.isdigit():
+        if not num.isdigit():
             print("Please give a number")
             continue
     # print(num_list)
