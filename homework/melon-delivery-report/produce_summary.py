@@ -5,7 +5,7 @@ def melon_delivery_summary(day):
     """Updating file to remobe redundancy and provide a daily report of melons stuffs"""
 
     print("Day", day)    
-    file_name = "um-deliveries-day-" + str(day) + ".txt"
+    file_name = "um-deliveries-day-1.txt"
         # f string
     the_file = open(file_name)
     for line in the_file:
