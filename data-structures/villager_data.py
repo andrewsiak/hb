@@ -1,3 +1,29 @@
+d = {
+    "test": "a",
+    "blah": "foo"
+}
+
+print(d)
+print(d["test"])
+x = d["test"]
+print(x)
+x += "b"
+print(x) # ab
+d["test"] = "b"
+x = d["test"]
+print(x) # b
+x = d["test"] + "b"
+print(x) # bb
+x += "b"
+print(x) # bbb
+d["blah"] += "foo"
+d["blah"] = d["blah"] + "foo"
+x = d["blah"]
+print(x) # foofoo
+d["zoom"] += "boom"
+x = d["zoom"]
+print(x)
+
 """Functions to parse a file containing villager data."""
 
 # def tokenize_data():
@@ -71,13 +97,17 @@ def get_villagers_by_species(filename, search_string="All"):
         line = line.rstrip()
         items = line.split('|') # name|species|personality|hobby|motto
 
-    # dictionary_name["new/old key name"] = value
-    name = items[0]
-    species = items[1]
-    # try:
-    villagers[species] += [name]
-    # except:
-        # villagers[species] = [name] 
+        # dictionary_name["new/old key name"] = value
+        name = items[0]
+        species = items[1]
+        if species in villagers:
+            villagers[species] += [name]
+        else:
+            villagers[species] = [name]
+        # try:
+        #     villagers[species] += [name]
+        # except:
+        #     villagers[species] = [name] 
 
     the_file.close()
 
