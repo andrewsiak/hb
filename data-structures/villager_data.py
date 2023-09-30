@@ -1,28 +1,28 @@
-d = {
-    "test": "a",
-    "blah": "foo"
-}
+# d = {
+#     "test": "a",
+#     "blah": "foo"
+# }
 
-print(d)
-print(d["test"])
-x = d["test"]
-print(x)
-x += "b"
-print(x) # ab
-d["test"] = "b"
-x = d["test"]
-print(x) # b
-x = d["test"] + "b"
-print(x) # bb
-x += "b"
-print(x) # bbb
-d["blah"] += "foo"
-d["blah"] = d["blah"] + "foo"
-x = d["blah"]
-print(x) # foofoo
-d["zoom"] += "boom"
-x = d["zoom"]
-print(x)
+# print(d)
+# print(d["test"])
+# x = d["test"]
+# print(x)
+# x += "b"
+# print(x) # ab
+# d["test"] = "b"
+# x = d["test"]
+# print(x) # b
+# x = d["test"] + "b"
+# print(x) # bb
+# x += "b"
+# print(x) # bbb
+# d["blah"] += "foo"
+# d["blah"] = d["blah"] + "foo"
+# x = d["blah"]
+# print(x) # foofoo
+# d["zoom"] += "boom"
+# x = d["zoom"]
+# print(x)
 
 """Functions to parse a file containing villager data."""
 
@@ -75,7 +75,8 @@ def all_species(filename):
     return find_animals
 
 
-def get_villagers_by_species(filename, search_string="All"):
+
+def get_villagers_by_species(filename, search_string='All'):
     """Return a list of villagers' names by species.
 
     Arguments:
@@ -88,10 +89,7 @@ def get_villagers_by_species(filename, search_string="All"):
     """
     #tokenize data
     # token list> dictionary. list[1] (species) >key; list[0]>items (villager names)
-    villagers = {}
-
-    the_file = open(filename)
-    
+    villagers_by_species = {}
 
     for line in the_file:
         line = line.rstrip()
@@ -100,10 +98,22 @@ def get_villagers_by_species(filename, search_string="All"):
         # dictionary_name["new/old key name"] = value
         name = items[0]
         species = items[1]
-        if species in villagers:
-            villagers[species] += [name]
-        else:
-            villagers[species] = [name]
+
+        if (search_string == 'All') or (search_string == species):
+            if species in villagers_by_species:
+                #wrong way:
+                villagers_by_species[species] = villagers_by_species[species].append(name)
+                # villagers_by_species[species] = villagers_by_species[species] + [name]
+            # alternate way:  villagers_by_species[species].append(name)
+
+            # {[key: ]} 
+            
+            else:
+                villagers_by_species[species] = [name]
+            #{[species(key): [list](value)]} 
+
+
+
         # try:
         #     villagers[species] += [name]
         # except:
@@ -116,8 +126,7 @@ def get_villagers_by_species(filename, search_string="All"):
     # if species == input("Enter animal here: ")
     # villagers.append(items[0])
 
-
-    return print(villagers) #sorted(villagers)
+    return sorted(villagers) 
 
 
 def all_names_by_hobby(filename):
@@ -215,3 +224,4 @@ def find_likeminded_villagers(filename, villager_name):
     """
 
     # TODO: replace this with your code
+print(get_villagers_by_species('data-structures/villagers.csv'))

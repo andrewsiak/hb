@@ -229,13 +229,14 @@ def join_strings(words):
     """
 
     if len(words) == 0:
-        return 0
+        return ''
     
+    line = ''
 
-    for word in words:()
-    word_list = word.split(',')
+    for word in words:
+        line = line + word
 
-    return word_list
+    return line
 
 
 def average(numbers):
@@ -256,8 +257,13 @@ def average(numbers):
     (Think of the best way to handle an empty input list, though,
     a feel free to provide a good solution here.)
     """
+    sum = 0
 
-    return 0
+    for num in numbers:
+        sum += num
+        avg = sum / len(numbers)
+
+    return avg
 
 
 def join_strings_with_comma(words):
@@ -276,8 +282,13 @@ def join_strings_with_comma(words):
         >>> join_strings_with_comma(["Pretzel"])
         'Pretzel'
     """
+    comma_list = words[0]
+    words = words[1:]
+    for word in words:
+        comma_list = f"{comma_list}, {word}"
 
-    return ""
+
+    return comma_list
 
 
 def reverse_list(items):
@@ -300,8 +311,11 @@ def reverse_list(items):
         >>> orig
         ['apple', 'berry', 'cherry']
     """
+    backwards_list = []
+    for item in items[::-1]:
+        backwards_list.append(item)
 
-    return []
+    return backwards_list
 
 
 def reverse_list_in_place(items):
@@ -323,8 +337,10 @@ def reverse_list_in_place(items):
         >>> orig
         ['I', 'love', 'cookies']
     """
+    for item in items[::-1]:
+        items.slice(item)
 
-    return []
+    return items
 
 
 def duplicates(items):
@@ -349,8 +365,12 @@ def duplicates(items):
         >>> orig
         ['apple', 'apple', 'berry']
     """
+    dupes = items
+    for i in items:
+        if items[i] == items[i-1]:
+            dupes.pop(items[i])
 
-    return []
+    return dupes
 
 
 def find_letter_indices(words, letter):
@@ -377,6 +397,10 @@ def find_letter_indices(words, letter):
     ("o" does not appear in "jumps", so the result for that input is
     `None`.)
     """
+
+    for character in words:
+        if character == letter:
+            
 
     return []
 

@@ -254,10 +254,12 @@ def sum_repeats(input_list):
     repeat_list = []
 
     for i in input_list:
-        # compare to indicies no items
+    #     # compare to indicies no items
         if input_list[i] == input_list[i+1]:
-            # stop at len of input list
+    #         # stop at len of input list
 
             repeat_list.append(i)
 
-    return repeat_list 
+
+    return 
+    
