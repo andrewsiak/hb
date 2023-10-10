@@ -43,7 +43,7 @@ class MelonType:
         """Replace the reporting code with the new_code."""
 
         self.code = new_code
-
+    
 
 def make_melon_types():
     """Returns a list of current melon types."""
@@ -158,24 +158,46 @@ class Melon:
 
 def make_melons(melon_types):
     """Returns a list of Melon objects."""
+    melons = []
+    with open("harvest_log.txt") as file:
+            for line in file:
+                line = line.rstrip()
+                words = line.split(' ')
 
+        # Shape 7 Color 5 Type musk Harvested By Sheila Field # 43
+    # self, code, shape_rating, color_rating, field_source, harvesterered, melon_sellable
+
+                code = words[5]
+                shape_rating = words[1]
+                color_rating = words[3]
+                field_source = words[11]
+                harvesterered = words[8]
+
+                new_melon = Melon(melon_types[code], shape_rating, color_rating, field_source, harvesterered)       
+                melons.extend([new_melon])
+    
     # melons_by_id = make_melon_type_lookup(melon_types)
 #    self, code, shape_rating, color_rating, field_source, harvesterered, melon_number, melon_sellable):
-    melons = []
-
-    melon_1 = Melon(melon_types['yw'], 8, 7, 2, 'Sheila')
-    melon_2 = Melon(melon_types['yw'], 3, 4, 2, 'Sheila')
-    melon_3 = Melon(melon_types['yw'], 9, 8, 3, 'Sheila')
-    melon_4 = Melon(melon_types['cas'], 10, 6, 35, 'Sheila')
-    melon_5 = Melon(melon_types['cren'], 8, 9, 35, 'Michael')
-    melon_6 = Melon(melon_types['cren'], 8, 2, 35, 'Michael')
-    melon_7 = Melon(melon_types['cren'], 2, 3, 4, 'Michael')
-    melon_8 = Melon(melon_types['musk'],6, 7, 4, 'Michael')
-    melon_9 = Melon(melon_types['yw'], 7, 10, 3, 'Sheila')
-
-    melons.extend([melon_1, melon_2, melon_3, melon_4, melon_5, melon_6, melon_7, melon_8, melon_9])
-
+   
     return melons
+    # old code below:
+    # 
+
+    # melon_1 = Melon(melon_types['yw'], 8, 7, 2, 'Sheila')
+    # melon_2 = Melon(melon_types['yw'], 3, 4, 2, 'Sheila')
+    # melon_3 = Melon(melon_types['yw'], 9, 8, 3, 'Sheila')
+    # melon_4 = Melon(melon_types['cas'], 10, 6, 35, 'Sheila')
+    # melon_5 = Melon(melon_types['cren'], 8, 9, 35, 'Michael')
+    # melon_6 = Melon(melon_types['cren'], 8, 2, 35, 'Michael')
+    # melon_7 = Melon(melon_types['cren'], 2, 3, 4, 'Michael')
+    # melon_8 = Melon(melon_types['musk'],6, 7, 4, 'Michael')
+    # melon_9 = Melon(melon_types['yw'], 7, 10, 3, 'Sheila')
+
+    # melons.extend([melon_1, melon_2, melon_3, melon_4, melon_5, melon_6, melon_7, melon_8, melon_9])
+
+    # return melons
+    # end of old code
+
     # self, code, shape_rating,  color_rating, field_source, harvesterered, melon_number
     # cren = MelonType("cren", 1996, "green", False, False, "Crenshaw")
     # cren.add_pairing(["prosciutto"])
@@ -202,4 +224,5 @@ print(melon_types)
 melon_types = make_melon_type_lookup(melon_types)
 print(melon_types)
 melons = make_melons(melon_types)
+print(melons)
 get_sellability_report(melons)
