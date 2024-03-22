@@ -30,3 +30,6 @@ class InternSalesperson(Salesperson):
 
         self.base_salary = base_salary
         self.commission_rate = commission_rate
+
+
+

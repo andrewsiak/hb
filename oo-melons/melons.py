@@ -64,6 +64,8 @@
 from random import randint
 import datetime
 
+#test from datetime import datetime
+
 class AbstractMelonOrder:
     """An abstract base class that other Melon Orders inherit from."""
     order_type = None
@@ -108,9 +110,9 @@ class AbstractMelonOrder:
     def is_it_rush_hour():
         """Determins if it is Mon-Fri and between 8-11am"""
         order_placed_moment = datetime.datetime.now() 
-        today = datetime.datetime.weekday(order_placed_moment) 
-        return order_placed_moment.hour >= 8 and order_placed_moment.hour <= 11 and today < 5
-
+        today = order_placed_moment.weekday #datetime.datetime.weekday(order_placed_moment) 
+        return ((order_placed_moment.hour >= 8) and (order_placed_moment.hour <= 11) and (today < 5)) 
+        
 
 class DomesticMelonOrder(AbstractMelonOrder): 
     """A melon order within the USA."""

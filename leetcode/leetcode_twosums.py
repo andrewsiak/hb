@@ -1,10 +1,11 @@
-def twoSum(nums_list, target):
+# def twoSum(nums_list, target):
+#     """Find two numbers in a list that add up to target"""
 
-    for index, number in enumerate(nums_list):
+#     for index, number in enumerate(nums_list):
         
-        remainder = target - number
-        if remainder in nums_list:
-            return [index, nums_list.index(remainder)]
+#         remainder = target - number
+#         if remainder in nums_list:
+#             return [index, nums_list.index(remainder)]
 
 
 def two_sum_dict(nums_list, target):
@@ -19,6 +20,9 @@ def two_sum_dict(nums_list, target):
 
 
 
-sum = 16
+sum_test = 16
 test_list = [1,2,3,4,5,6,7,8,9]
-print(two_sum_dict(test_list, sum))
+print("Test", two_sum_dict(test_list, sum_test))
+
+
+
